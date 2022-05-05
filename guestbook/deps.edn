@@ -1,30 +1,30 @@
 {:paths   ["src/clj"
            "resources"]
 
- :deps    {org.clojure/clojure {:mvn/version "1.10.3"}
+ :deps    {org.clojure/clojure {:mvn/version "1.11.1"}
 
            ;; Routing
- metosin/reitit {:mvn/version "0.5.13"}
+ metosin/reitit {:mvn/version "0.5.18"}
 
            ;; Ring
- metosin/ring-http-response {:mvn/version "0.9.2"}
- ring/ring-core {:mvn/version "1.9.3"}
+ metosin/ring-http-response {:mvn/version "0.9.3"}
+ ring/ring-core {:mvn/version "1.9.5"}
  ring/ring-defaults {:mvn/version "0.3.3"}
 
            ;; Data coercion
- luminus-transit/luminus-transit {:mvn/version "0.1.2"
+ luminus-transit/luminus-transit {:mvn/version "0.1.5"
                                   :exclusions [com.cognitect/transit-clj]}
  metosin/muuntaja {:mvn/version "0.6.8"}
 
            ;; kit Libs
- io.github.kit-clj/kit-core {:mvn/version "1.0.0"}
- io.github.kit-clj/kit-undertow {:mvn/version "1.0.0"}
- io.github.kit-clj/kit-repl {:mvn/version "1.0.0"}
- selmer/selmer {:mvn/version "1.12.49"}
+ io.github.kit-clj/kit-core {:mvn/version "1.0.1"}
+ io.github.kit-clj/kit-undertow {:mvn/version "1.0.1"}
+ io.github.kit-clj/kit-repl {:mvn/version "1.0.1"}
+ selmer/selmer {:mvn/version "1.12.50"}
  luminus/ring-ttl-session {:mvn/version "0.3.3"}
- io.github.kit-clj/kit-sql {:mvn/version "1.0.0"}
- org.xerial/sqlite-jdbc {:mvn/version "3.34.0"}}
- :aliases {:uberjar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.267"}}
+ io.github.kit-clj/kit-sql {:mvn/version "1.1.1"}
+ org.xerial/sqlite-jdbc {:mvn/version "3.36.0.3"}}
+ :aliases {:uberjar {:replace-deps {com.github.seancorfield/depstar {:mvn/version "2.1.303"}}
                      :exec-fn      hf.depstar/uberjar
                      :exec-args    {:aot        true
                                     :jar        "guestbook.jar"
@@ -32,9 +32,9 @@
                                     :target-dir "target/uberjar"}
                      :extra-paths ["env/prod/clj" "env/prod/resources"]}
 
-           :build {:deps {io.github.clojure/tools.build {:git/sha "7ef409b"
-                                                         :git/tag "v0.6.2" :git/url "https://github.com/clojure/tools.build.git"}
-                          slipset/deps-deploy {:mvn/version "0.1.5"}
+           :build {:deps {io.github.clojure/tools.build {:git/sha "7d40500"
+                                                         :git/tag "v0.8.1" :git/url "https://github.com/clojure/tools.build.git"}
+                          slipset/deps-deploy {:mvn/version "0.2.0"}
                           weavejester/dependency {:mvn/version "0.2.1"}}
                    :ns-default build}
 
@@ -42,24 +42,24 @@
            :dev  {:extra-deps  {;; uncomment to enable hot classpath reload in the REPL
                                 #_#_com.lambdaisland/classpath  {:mvn/version "0.0.27"}
                                 criterium/criterium             {:mvn/version "0.4.6"}
-                                expound/expound                 {:mvn/version "0.8.9"}
+                                expound/expound                 {:mvn/version "0.9.0"}
                                 integrant/repl                  {:mvn/version "0.3.2"}
                                 pjstadig/humane-test-output     {:mvn/version "0.11.0"}
-                                ring/ring-devel                 {:mvn/version "1.9.3"}
+                                ring/ring-devel                 {:mvn/version "1.9.5"}
                                 ring/ring-mock                  {:mvn/version "0.4.0"}
-                                io.github.kit-clj/kit-generator {:mvn/version "0.1.0"}}
+                                io.github.kit-clj/kit-generator {:mvn/version "0.1.5"}}
                   :extra-paths ["env/dev/clj" "env/dev/resources" "test/clj"]
                   :main-opts   ["-e" "(require 'pjstadig.humane-test-output) (pjstadig.humane-test-output/activate!)" "-r"]}
 
            :test {:extra-deps  {criterium/criterium                  {:mvn/version "0.4.6"}
-                                expound/expound                      {:mvn/version "0.8.9"}
+                                expound/expound                      {:mvn/version "0.9.0"}
                                 integrant/repl                       {:mvn/version "0.3.2"}
                                 io.github.cognitect-labs/test-runner {:git/tag "v0.5.0"
                                                                       :git/sha "b3fd0d2"}
                                 pjstadig/humane-test-output          {:mvn/version "0.11.0"}
-                                ring/ring-devel                      {:mvn/version "1.9.3"}
+                                ring/ring-devel                      {:mvn/version "1.9.5"}
                                 ring/ring-mock                       {:mvn/version "0.4.0"}
-                                io.github.kit-clj/kit-generator      {:mvn/version "0.1.0"}}
+                                io.github.kit-clj/kit-generator      {:mvn/version "0.1.5"}}
                   :exect-fn    cognitect.test-runner.api/test
                   :extra-paths ["env/dev/clj" "env/dev/resources" "env/test/resources" "test/clj"]
                   :main-opts   ["-e" "(require 'pjstadig.humane-test-output) (pjstadig.humane-test-output/activate!)"
